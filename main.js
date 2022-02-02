@@ -32,12 +32,12 @@ $(document).ready(()=>{
         var dt = new Date(date1)
         dt.setHours(dt.getHours()+ h)
         // var dateString = dt.toLocaleString('en-us', {  weekday: 'long' })+" "+ dt.getDay() +"/"+dt.getMonth()+"/"+dt.getFullYear()+ " " + formatAMPM(dt)
-        return dt.toString().split(" GMT")[0];
+        return dt.toString().split(":")[0].substring(0, dt.toString().split(":")[0].length -2).replace(/ \d\d\d\d /,"")+ " " + formatAMPM(dt);
     }
     var formatAMPM = function (date) {
         var hours = date.getHours();
         var minutes = date.getMinutes();
-        var ampm = hours >= 12 ? 'pm' : 'am';
+        var ampm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12;
         hours = hours ? hours : 12; // the hour '0' should be '12'
         minutes = minutes < 10 ? '0'+minutes : minutes;
