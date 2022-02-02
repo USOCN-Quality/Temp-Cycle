@@ -21,18 +21,31 @@
   <div class="ui calendar" id="example1">
     <div style="width: 100%;"  class="ui input big left icon">
       <i class="calendar icon"></i>
-      <input type="text" placeholder="Date/Time">
+      <input id="dateInput" type="text" placeholder="Date/Time">
     </div>
   </div>
         </div>
         <div class="four wide column">
-            <button style="margin-top: 1%;" class="ui button">Check Times</button>
+            <button style="margin-top: 1%;" id="checkTimes" class="ui button">Check Times</button>
         </div>
+      </div>
+      <div class="ui grid">
+
+        <div class="eight wide column">
+        <h2>Insert Arms at These Times (48hr period)</h2>
+            <div id="addTimesHere"><p>(Times to add arms will appear here after selecting a date and time)</p></div>
+        </div>
+
+        <div class="eight wide column">
+            <h2>Remove Arms at These Times (48hr period)</h2>
+                <div id="removeTimesHere"><p>(Times to remove arms will appear here after selecting a date and time)</p></div>
+            </div>
       </div>
  
     
     
   </div>
   <script src="./main.js"></script>
+  <script src="./date.js"></script>
 </body>
 </html>
