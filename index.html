@@ -1,21 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Document</title>
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
+  <meta charset="utf-8">
+  <title>Temperature Cycle Time Selector</title>
 </head>
 <body>
-    <div class="container">
-        <h1 class="main-header" >Temp Cycle App</h1>
-        <button class="btn btn-primary clickMe">Click me</button>
-
+  
+  <div class="ui container">
+    <h1>Select a Date/Time</h1>
+    <div class="ui grid">
+        
+        
+        <div class="six wide column">
+  <div class="ui calendar" id="example1">
+    <div  class="ui input large left icon">
+      <i class="calendar icon"></i>
+      <input type="text" placeholder="Date/Time">
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="./main.js"></script>
+  </div>
+        </div>
+        <div class="four wide column">
+            <button style="margin-top: 1%;" class="ui button">Check Times</button>
+        </div>
+      </div>
+ 
+    
+    
+  </div>
+  <script src="./main.js"></script>
 </body>
 </html>
