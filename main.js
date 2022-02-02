@@ -1,5 +1,6 @@
 $(document).ready(()=>{
-    var insertTimes = [8,12,16,20,24,32,44]
+    var insertTimes = [8,16,24,32,40,48]
+    var removeTimes = [4,12,20,28,36,44]
     $("#checkTimes").on("click",function(){
         var dateTime = $("#dateInput").val()
         if(dateTime ===""){
@@ -7,10 +8,21 @@ $(document).ready(()=>{
         }else if(dateTime.match(/\w* \d, \d\d\d\d/)[0]){
             //alert(AddTimes(dateTime,16))
             $("#addTimesHere").empty()
+            $("#removeTimesHere").empty()
             insertTimes.forEach(item=>{
                 var insertTimesString ="<p>"+AddTimes(dateTime,item)+"</p>"
                
                 $("#addTimesHere").append(insertTimesString)
+               
+            })
+            removeTimes.forEach((thing,index)=>{
+               if(index<removeTimes.length-1){
+                var removeTimesString ="<p>"+AddTimes(dateTime,thing)+"</p>"
+                $("#removeTimesHere").append(removeTimesString)
+               }else{
+                var removeTimesString2 ="<p style='background-color:#00FF00'><strong>"+AddTimes(dateTime,thing)+" -  this is when your cycle will finish</strong></p>"
+                $("#removeTimesHere").append(removeTimesString2)
+               }
                
             })
         }
