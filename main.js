@@ -3,13 +3,12 @@ $(document).ready(()=>{
     var insertTimes = [8,16,24,32,40,48]
     var removeTimes = [4,12,20,28,36,44]
     $("#checkTimes").on("click",function(){
-        $(".tempTable").show()
-        $(".notes").hide();
         var dateTime = $("#dateInput").val()
         if(dateTime ==="" || !dateTime.match(/\w* \d*, \d\d\d\d/)){
             alert("Please select a date/time value from the dropdown in a valid format")
         }else if(dateTime.match(/\w* \d*, \d\d\d\d/)[0]){
-            //alert(AddTimes(dateTime,16))
+            $(".tempTable").show()
+            $(".notes").hide();
             $("#addTimesHere").empty()
             $("#removeTimesHere").empty()
             insertTimes.forEach(item=>{
