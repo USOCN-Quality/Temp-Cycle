@@ -1,38 +1,47 @@
 $(document).ready(()=>{
+    $("table").hide()
     var insertTimes = [8,16,24,32,40,48]
     var removeTimes = [4,12,20,28,36,44]
     $("#checkTimes").on("click",function(){
+        $("table").show()
         var dateTime = $("#dateInput").val()
-        if(dateTime ===""){
-            alert("Please put in a date/time value")
-        }else if(dateTime.match(/\w* \d, \d\d\d\d/)[0]){
+        if(dateTime ==="" || !dateTime.match(/\w* \d*, \d\d\d\d/)){
+            alert("Please select a date/time value from the dropdown in a valid format")
+        }else if(dateTime.match(/\w* \d*, \d\d\d\d/)[0]){
             //alert(AddTimes(dateTime,16))
             $("#addTimesHere").empty()
             $("#removeTimesHere").empty()
             insertTimes.forEach(item=>{
-                var insertTimesString ="<p>"+AddTimes(dateTime,item)+"</p>"
+                returnArray = AddTimes(dateTime,item).split(" ")
+                var insertTimesString ="<tr><td>"+returnArray[0]+"</td><td>"+returnArray[1]+" "+ returnArray[2]+ "</td><td>"+returnArray[3]+"</td></tr>"
                
                 $("#addTimesHere").append(insertTimesString)
                
             })
             removeTimes.forEach((thing,index)=>{
+                
+                returnArray = AddTimes(dateTime,thing).split(" ")
                if(index<removeTimes.length-1){
-                var removeTimesString ="<p>"+AddTimes(dateTime,thing)+"</p>"
+                var removeTimesString ="<tr><td>"+returnArray[0]+"</td><td>"+returnArray[1]+" "+ returnArray[2]+ "</td><td>"+returnArray[3]+"</td></tr>"
                 $("#removeTimesHere").append(removeTimesString)
                }else{
-                var removeTimesString2 ="<p style='background-color:#00FF00'><strong>"+AddTimes(dateTime,thing)+" -  this is when your cycle will finish</strong></p>"
+                var removeTimesString2 ="<tr style='background-color:#00FF00'><td>"+returnArray[0]+"</td><td>"+returnArray[1]+" "+ returnArray[2]+ " - cycle finish</td><td>"+returnArray[3]+"</td></tr>"
                 $("#removeTimesHere").append(removeTimesString2)
                }
                
             })
+        }else{
+            alert("Please select a date/time value from the dropdown in a valid format")
         }
     })
 
     var AddTimes = function(date1, h){
         var dt = new Date(date1)
         dt.setHours(dt.getHours()+ h)
-        // var dateString = dt.toLocaleString('en-us', {  weekday: 'long' })+" "+ dt.getDay() +"/"+dt.getMonth()+"/"+dt.getFullYear()+ " " + formatAMPM(dt)
-        return dt.toString().split(":")[0].substring(0, dt.toString().split(":")[0].length -2).replace(/ \d\d\d\d /,"")+ " " + formatAMPM(dt);
+        var dateString = dt.toLocaleString('en-us', {  weekday: 'long' })+" "+ formatAMPM(dt)+" " + (Number(dt.getMonth())+1) +"/"+dt.getDate()+"/"+dt.getFullYear()
+       //console.log(dateString)
+       // var originalFormatForString = dt.toString().split(":")[0].substring(0, dt.toString().split(":")[0].length -2).replace(/ \d\d\d\d /,"")+ " " + formatAMPM(dt);
+        return dateString
     }
     var formatAMPM = function (date) {
         var hours = date.getHours();
